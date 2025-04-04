@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEBESTIAL - Streaming, IPTV, Paneles y más</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Glow effect -->
+    <style>
+        :root {
+            --color-primario: #6e00ff;
+            --color-secundario: #ff00aa;
+            --color-terciario: #00f7ff;
+            --color-fondo: #0f051d;
+            --color-texto: #ffffff;
+            --color-destacado: #ff8c00;
+            --neon-shadow: 0 0 10px rgba(110, 0, 255, 0.8), 0 0 20px rgba(255, 0, 170, 0.6);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+            box-shadow: var(--neon-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(15, 5, 29, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 247, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #00f7ff, #ff00aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--color-fondo) 0%, #1a0a35 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(110, 0, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /><path fill="none" stroke="rgba(255, 0, 170, 0.1)" stroke-width="0.5" d="M0,50 Q25,25 50,50 T100,50" /></svg>');
+            background-size: cover;
+        }
+        
+        .service-card {
+            background: rgba(15, 5, 29, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            border: 1px solid rgba(110, 0, 255, 0.3);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--color-primario), var(--color-terciario), var(--color-secundario));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover::after {
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: var(--neon-shadow);
+            border-color: var(--color-terciario);
+        }
+        
+        .service-card img {
+            transition: all 0.5s ease;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .service-card .card-body {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .price-tag {
+            background: linear-gradient(45deg, var(--color-destacado), #ff5100);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .service-features li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .service-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--color-terciario);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            padding: 10px 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(110, 0, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 0, 170, 0.5), 0 0 30px rgba(0, 247, 255, 0.4);
+            color: white;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+            transform: translateY(-2px);
+        }
+        
+        .service-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-terciario);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .action-icon:hover {
+            background: var(--color-terciario);
+            color: var(--color-fondo);
+            transform: scale(1.1);
+        }
+        
+        .tooltip-inner {
+            background-color: var(--color-primario);
+            color: white;
+            border-radius: 8px;
+            padding: 5px 10px;
+        }
+        
+        .hidden-category {
+            display: none;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--color-primario), var(--color-terciario));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        /* Nuevos estilos para el carrito */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--neon-shadow);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--color-destacado);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        /* Modal de carrito */
+        .cart-modal .modal-content {
+            background: var(--color-fondo);
+            border: 1px solid var(--color-primario);
+            box-shadow: var(--neon-shadow);
+        }
+        
+        .cart-modal .modal-header {
+            border-bottom: 1px solid var(--color-primario);
+        }
+        
+        .cart-modal .modal-footer {
+            border-top: 1px solid var(--color-primario);
+        }
+        
+        .cart-item {
+            border-bottom: 1px solid rgba(110, 0, 255, 0.3);
+            padding: 10px 0;
+        }
+        
+        /* Footer mejorado */
+        .footer {
+            background: linear-gradient(180deg, #0f051d 0%, #1a0a35 100%);
+            padding: 50px 0 20px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00f7ff, #ff00aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .footer-links h5 {
+            color: var(--color-terciario);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--color-texto);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-terciario);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-terciario);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .payment-method {
+            width: 50px;
+            height: 30px;
+            background: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        
+        .payment-method img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .newsletter {
+            margin-top: 20px;
+        }
+        
+        .newsletter input {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .newsletter button {
+            width: 100%;
+        }
+        
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(110, 0, 255, 0.3);
+        }
+        
+        /* Efecto de partículas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, var(--color-primario), var(--color-terciario));
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Efecto de escritura */
+        .typing-effect {
+            border-right: 2px solid var(--color-terciario);
+            animation: blink 0.75s step-end infinite;
+            display: inline-block;
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--color-terciario) }
+        }
+        
+        /* Modal de detalles del producto */
+        .product-modal .modal-content {
+            background: linear-gradient(135deg, #1a0a35 0%, var(--color-fondo) 100%);
+            border: 1px solid var(--color-primario);
+            box-shadow: var(--neon-shadow);
+        }
+        
+        .product-modal .modal-header {
+            border-bottom: 1px solid var(--color-primario);
+        }
+        
+        .product-modal .modal-footer {
+            border-top: 1px solid var(--color-primario);
+        }
+        
+        .product-gallery {
+            position: relative;
+        }
+        
+        .product-thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .product-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .product-thumbnail:hover, .product-thumbnail.active {
+            border-color: var(--color-terciario);
+        }
+        
+        .product-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Animación de carga */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Carrito flotante -->
+    <div class="cart-icon ripple" data-bs-toggle="modal" data-bs-target="#cartModal">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge">0</span>
+    </div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold animate__animated animate__fadeInLeft" href="#">
+                <span class="logo"><i class="fas fa-play-circle"></i>CINEBESTIAL</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto animate__animated animate__fadeInRight">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#planes">Planes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-user me-1"></i>Iniciar Sesión
+                        </a>
+                    </li>
+                </ul>
+                <div class="ms-3 animate__animated animate__fadeInRight">
+                    <button class="btn btn-outline-light rounded-pill ripple" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section con Carrusel -->
+    <section id="inicio" class="hero-section">
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner rounded-4 overflow-hidden">
+                    <div class="carousel-item active">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">Todo el entretenimiento <span class="typing-effect"></span></h1>
+                                <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">Streaming, IPTV, paneles y música premium con los mejores planes.</p>
+                                <button class="btn btn-gradient btn-lg animate__animated animate__fadeInUp animate__delay-2s ripple" data-bs-toggle="modal" data-bs-target="#registerModal">Comenzar Ahora</button>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <img src="https://images.unsplash.com/photo-1608889825103-eb5a5b5d07e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Hero Image" class="img-fluid rounded-4 shadow-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <h1 class="display-4 fw-bold mb-4">Servicios Premium</h1>
+                                <p class="lead mb-4">Accede a contenido exclusivo desde la comodidad de tu hogar.</p>
+                                <button class="btn btn-gradient btn-lg ripple" data-bs-toggle="modal" data-bs-target="#registerModal">Ver Catálogo</button>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Servicios" class="img-fluid rounded-4 shadow-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <h1 class="display-4 fw-bold mb-4">Experiencia sin límites</h1>
+                                <p class="lead mb-4">La mejor calidad y variedad para todos tus dispositivos.</p>
+                                <button class="btn btn-gradient btn-lg ripple" data-bs-toggle="modal" data-bs-target="#registerModal">Comenzar Ahora</button>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Experiencia" class="img-fluid rounded-4 shadow-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator animate__animated animate__fadeIn animate__delay-3s">
+            <a href="#servicios" class="text-white">
+                <i class="fas fa-chevron-down fa-2x"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios por Categorías -->
+    <section id="servicios" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Nuestros Servicios</h2>
+            <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Descubre todo lo que tenemos para ofrecerte</p>
+            
+            <!-- Filtro de categorías -->
+            <div class="category-filter" data-aos="fade-up" data-aos-delay="200">
+                <button class="category-btn active" data-category="all">Todos</button>
+                <button class="category-btn" data-category="streaming">
+                    <i class="fas fa-film me-1"></i> Streaming
+                </button>
+                <button class="category-btn" data-category="iptv">
+                    <i class="fas fa-tv me-1"></i> IPTV
+                </button>
+                <button class="category-btn" data-category="paneles">
+                    <i class="fas fa-desktop me-1"></i> Paneles
+                </button>
+                <button class="category-btn" data-category="musica">
+                    <i class="fas fa-music me-1"></i> Música
+                </button>
+                <button class="category-btn" data-category="otros">
+                    <i class="fas fa-ellipsis-h me-1"></i> Otros
+                </button>
+            </div>
+            
+            <!-- Contenedor de servicios -->
+            <div class="row g-4 services-container">
+                <!-- Servicio 1 - Streaming -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="streaming" data-aos="fade-up">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Netflix Premium">
+                            <span class="category-badge">Streaming</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Netflix Premium</h5>
+                            <p class="card-text text-muted small">Acceso completo con 4 pantallas y Ultra HD.</p>
+                            <div class="price-tag">S/. 45.99/mes</div>
+                            <ul class="service-features">
+                                <li>4K Ultra HD</li>
+                                <li>4 pantallas</li>
+                                <li>Sin restricciones</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Netflix Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Netflix Premium","price":45.99,"category":"Streaming","image":"https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 - Streaming -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="streaming" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1637858868799-7f26a0640eb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Disney+">
+                            <span class="category-badge">Streaming</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Disney+ Premium</h5>
+                            <p class="card-text text-muted small">Catálogo completo de Disney, Marvel y más.</p>
+                            <div class="price-tag">S/. 35.99/mes</div>
+                            <ul class="service-features">
+                                <li>4K HDR</li>
+                                <li>Descargas</li>
+                                <li>7 perfiles</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Disney+ Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Disney+ Premium","price":35.99,"category":"Streaming","image":"https://images.unsplash.com/photo-1637858868799-7f26a0640eb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 - Streaming -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="streaming" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="HBO Max">
+                            <span class="category-badge">Streaming</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">HBO Max Completo</h5>
+                            <p class="card-text text-muted small">Estrenos de cine, series HBO y más.</p>
+                            <div class="price-tag">S/. 39.99/mes</div>
+                            <ul class="service-features">
+                                <li>4K Dolby Vision</li>
+                                <li>5 pantallas</li>
+                                <li>Sin anuncios</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="HBO Max Completo">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"HBO Max Completo","price":39.99,"category":"Streaming","image":"https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 4 - Streaming -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="streaming" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Amazon Prime">
+                            <span class="category-badge">Streaming</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Amazon Prime Video</h5>
+                            <p class="card-text text-muted small">Películas, series y envíos gratis.</p>
+                            <div class="price-tag">S/. 32.99/mes</div>
+                            <ul class="service-features">
+                                <li>4K HDR10+</li>
+                                <li>3 pantallas</li>
+                                <li>Envíos gratis</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Amazon Prime Video">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Amazon Prime Video","price":32.99,"category":"Streaming","image":"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 5 - IPTV -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="iptv" data-aos="fade-up">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1567134999010-0d3dcd642c52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="IPTV Premium">
+                            <span class="category-badge">IPTV</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">IPTV Premium</h5>
+                            <p class="card-text text-muted small">10,000 canales internacionales en HD.</p>
+                            <div class="price-tag">S/. 54.99/mes</div>
+                            <ul class="service-features">
+                                <li>10,000+ canales</li>
+                                <li>Guía EPG</li>
+                                <li>VOD con 50,000+</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="IPTV Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"IPTV Premium","price":54.99,"category":"IPTV","image":"https://images.unsplash.com/photo-1567134999010-0d3dcd642c52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 6 - IPTV -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="iptv" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="IPTV Deportes">
+                            <span class="category-badge">IPTV</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">IPTV Deportes</h5>
+                            <p class="card-text text-muted small">Canales deportivos y eventos en vivo.</p>
+                            <div class="price-tag">S/. 69.99/mes</div>
+                            <ul class="service-features">
+                                <li>Canales deportivos</li>
+                                <li>PPV incluido</li>
+                                <li>Eventos en vivo</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="IPTV Deportes">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"IPTV Deportes","price":69.99,"category":"IPTV","image":"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 7 - IPTV -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="iptv" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="IPTV Familiar">
+                            <span class="category-badge">IPTV</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">IPTV Familiar</h5>
+                            <p class="card-text text-muted small">Contenido para toda la familia.</p>
+                            <div class="price-tag">S/. 48.99/mes</div>
+                            <ul class="service-features">
+                                <li>Canales infantiles</li>
+                                <li>Contenido familiar</li>
+                                <li>5 conexiones</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="IPTV Familiar">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"IPTV Familiar","price":48.99,"category":"IPTV","image":"https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 8 - IPTV -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="iptv" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1567593810070-7b5f6f0bc974?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="IPTV Latino">
+                            <span class="category-badge">IPTV</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">IPTV Latino</h5>
+                            <p class="card-text text-muted small">Canales latinoamericanos y telenovelas.</p>
+                            <div class="price-tag">S/. 59.99/mes</div>
+                            <ul class="service-features">
+                                <li>Canales latinos</li>
+                                <li>Telenovelas</li>
+                                <li>Noticias</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="IPTV Latino">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"IPTV Latino","price":59.99,"category":"IPTV","image":"https://images.unsplash.com/photo-1567593810070-7b5f6f0bc974?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 9 - Paneles -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="paneles" data-aos="fade-up">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Panel Netflix">
+                            <span class="category-badge">Panel</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Panel Netflix</h5>
+                            <p class="card-text text-muted small">Administra múltiples cuentas de Netflix.</p>
+                            <div class="price-tag">S/. 109.99/mes</div>
+                            <ul class="service-features">
+                                <li>Hasta 50 cuentas</li>
+                                <li>Renovación automática</li>
+                                <li>Estadísticas</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Panel Netflix">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Panel Netflix","price":109.99,"category":"Panel","image":"https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 10 - Paneles -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="paneles" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Panel Spotify">
+                            <span class="category-badge">Panel</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Panel Spotify</h5>
+                            <p class="card-text text-muted small">Gestiona suscripciones de Spotify.</p>
+                            <div class="price-tag">S/. 89.99/mes</div>
+                            <ul class="service-features">
+                                <li>Hasta 100 cuentas</li>
+                                <li>Familia e individual</li>
+                                <li>Auto-renovación</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Panel Spotify">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Panel Spotify","price":89.99,"category":"Panel","image":"https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 11 - Paneles -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="paneles" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Panel IPTV">
+                            <span class="category-badge">Panel</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Panel IPTV</h5>
+                            <p class="card-text text-muted small">Sistema completo para administrar IPTV.</p>
+                            <div class="price-tag">S/. 179.99/mes</div>
+                            <ul class="service-features">
+                                <li>Usuarios ilimitados</li>
+                                <li>Códigos m3u</li>
+                                <li>Renovaciones</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Panel IPTV">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Panel IPTV","price":179.99,"category":"Panel","image":"https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 12 - Paneles -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="paneles" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Panel Multi-Servicio">
+                            <span class="category-badge">Panel</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Panel Multi-Servicio</h5>
+                            <p class="card-text text-muted small">Administra múltiples servicios.</p>
+                            <div class="price-tag">S/. 219.99/mes</div>
+                            <ul class="service-features">
+                                <li>Todos los servicios</li>
+                                <li>API integrada</li>
+                                <li>Reportes detallados</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Panel Multi-Servicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Panel Multi-Servicio","price":219.99,"category":"Panel","image":"https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 13 - Música -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="musica" data-aos="fade-up">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Spotify Premium">
+                            <span class="category-badge">Música</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Spotify Premium</h5>
+                            <p class="card-text text-muted small">Música sin anuncios y descargas.</p>
+                            <div class="price-tag">S/. 21.99/mes</div>
+                            <ul class="service-features">
+                                <li>Sin anuncios</li>
+                                <li>Descargas</li>
+                                <li>Calidad alta</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Spotify Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Spotify Premium","price":21.99,"category":"Música","image":"https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 14 - Música -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="musica" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Apple Music">
+                            <span class="category-badge">Música</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Apple Music</h5>
+                            <p class="card-text text-muted small">90 millones de canciones.</p>
+                            <div class="price-tag">S/. 25.99/mes</div>
+                            <ul class="service-features">
+                                <li>90M+ canciones</li>
+                                <li>Radio Beats 1</li>
+                                <li>Sin anuncios</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Apple Music">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Apple Music","price":25.99,"category":"Música","image":"https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 15 - Música -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="musica" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="YouTube Premium">
+                            <span class="category-badge">Música</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">YouTube Premium</h5>
+                            <p class="card-text text-muted small">Música y videos sin anuncios.</p>
+                            <div class="price-tag">S/. 29.99/mes</div>
+                            <ul class="service-features">
+                                <li>Sin anuncios</li>
+                                <li>Reproducción offline</li>
+                                <li>YouTube Music</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="YouTube Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"YouTube Premium","price":29.99,"category":"Música","image":"https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 16 - Música -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="musica" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Deezer Premium">
+                            <span class="category-badge">Música</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Deezer Premium</h5>
+                            <p class="card-text text-muted small">Recomendaciones personalizadas.</p>
+                            <div class="price-tag">S/. 19.99/mes</div>
+                            <ul class="service-features">
+                                <li>73M+ canciones</li>
+                                <li>Sin anuncios</li>
+                                <li>Flow personalizado</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Deezer Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Deezer Premium","price":19.99,"category":"Música","image":"https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 17 - Otros -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="otros" data-aos="fade-up">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="VPN Premium">
+                            <span class="category-badge">VPN</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">VPN Premium</h5>
+                            <p class="card-text text-muted small">Navegación segura y sin restricciones.</p>
+                            <div class="price-tag">S/. 32.99/mes</div>
+                            <ul class="service-features">
+                                <li>100+ países</li>
+                                <li>Sin registros</li>
+                                <li>5 dispositivos</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="VPN Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"VPN Premium","price":32.99,"category":"VPN","image":"https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 18 - Otros -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="otros" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Almacenamiento Cloud">
+                            <span class="category-badge">Cloud</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Almacenamiento Cloud</h5>
+                            <p class="card-text text-muted small">Guarda tus archivos de forma segura.</p>
+                            <div class="price-tag">S/. 36.99/mes</div>
+                            <ul class="service-features">
+                                <li>2TB espacio</li>
+                                <li>Acceso multiplataforma</li>
+                                <li>Backup automático</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Almacenamiento Cloud">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Almacenamiento Cloud","price":36.99,"category":"Cloud","image":"https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 19 - Otros -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="otros" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Juegos Premium">
+                            <span class="category-badge">Gaming</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Juegos Premium</h5>
+                            <p class="card-text text-muted small">Acceso a cientos de juegos.</p>
+                            <div class="price-tag">S/. 54.99/mes</div>
+                            <ul class="service-features">
+                                <li>100+ juegos</li>
+                                <li>Nuevos lanzamientos</li>
+                                <li>Multijugador</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Juegos Premium">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Juegos Premium","price":54.99,"category":"Gaming","image":"https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 20 - Otros -->
+                <div class="col-md-6 col-lg-3 service-item" data-category="otros" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid w-100" alt="Paquete Completo">
+                            <span class="category-badge">Combo</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Paquete Completo</h5>
+                            <p class="card-text text-muted small">Todos nuestros servicios en un paquete.</p>
+                            <div class="price-tag">S/. 149.99/mes</div>
+                            <ul class="service-features">
+                                <li>Streaming</li>
+                                <li>IPTV</li>
+                                <li>Música</li>
+                                <li>VPN + Cloud</li>
+                            </ul>
+                            <div class="service-actions">
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Paquete Completo">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <button class="btn btn-gradient btn-sm ripple add-to-cart" data-product='{"name":"Paquete Completo","price":149.99,"category":"Combo","image":"https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"}'>Contratar</button>
+                                <div class="action-icon" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Planes -->
+    <section id="planes" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Nuestros Planes</h2>
+            <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Elige el plan que mejor se adapte a tus necesidades</p>
+            
+            <div class="row g-4">
+                <!-- Plan Básico -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="service-card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="mb-3">Básico</h3>
+                            <div class="price-tag">S/. 39.99/mes</div>
+                            <ul class="service-features text-start mb-4">
+                                <li>1 servicio a elegir</li>
+                                <li>1 dispositivo</li>
+                                <li>Soporte básico</li>
+                                <li><del>Sin panel</del></li>
+                                <li><del>Sin descuentos</del></li>
+                            </ul>
+                            <button class="btn btn-gradient w-100 ripple" data-bs-toggle="modal" data-bs-target="#planModal" data-plan="Básico">Seleccionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plan Estándar -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card h-100" style="border: 2px solid var(--color-terciario);">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3 class="mb-3">Estándar</h3>
+                            <div class="price-tag">S/. 89.99/mes</div>
+                            <ul class="service-features text-start mb-4">
+                                <li>3 servicios a elegir</li>
+                                <li>3 dispositivos</li>
+                                <li>Soporte prioritario</li>
+                                <li>Panel básico</li>
+                                <li>10% descuento</li>
+                            </ul>
+                            <button class="btn btn-gradient w-100 ripple" data-bs-toggle="modal" data-bs-target="#planModal" data-plan="Estándar">Seleccionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plan Premium -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3 class="mb-3">Premium</h3>
+                            <div class="price-tag">S/. 179.99/mes</div>
+                            <ul class="service-features text-start mb-4">
+                                <li>Todos los servicios</li>
+                                <li>Dispositivos ilimitados</li>
+                                <li>Soporte 24/7 VIP</li>
+                                <li>Panel completo</li>
+                                <li>25% descuento</li>
+                                <li>Asesor personal</li>
+                            </ul>
+                            <button class="btn btn-gradient w-100 ripple" data-bs-toggle="modal" data-bs-target="#planModal" data-plan="Premium">Seleccionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="300">
+                <p class="text-muted">¿Necesitas un plan personalizado? <a href="#contacto" class="text-decoration-none">Contáctanos</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h2 class="section-title">Contáctanos</h2>
+                    <p class="mb-5">¿Tienes alguna pregunta? Estamos aquí para ayudarte.</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="p-3">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <h5>Teléfono</h5>
+                                <p class="mb-0">+51 926 447 926</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="p-3">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h5>Email</h5>
+                                <p class="mb-0">info@cinebestial.top</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="p-3">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h5>Dirección</h5>
+                                <p class="mb-0">Lima, Perú</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="mt-5" data-aos="fade-up" data-aos-delay="400" id="contactForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-transparent text-white" placeholder="Nombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control bg-transparent text-white" placeholder="Email" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control bg-transparent text-white" placeholder="Asunto">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control bg-transparent text-white" rows="4" placeholder="Mensaje" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-gradient ripple">Enviar Mensaje</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">CINEBESTIAL</div>
+                    <p class="text-muted">La mejor plataforma de streaming y servicios digitales premium en Perú.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Servicios</h5>
+                        <ul>
+                            <li><a href="#">Streaming</a></li>
+                            <li><a href="#">IPTV</a></li>
+                            <li><a href="#">Paneles</a></li>
+                            <li><a href="#">Música</a></li>
+                            <li><a href="#">VPN</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Empresa</h5>
+                        <ul>
+                            <li><a href="#">Nosotros</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Carreras</a></li>
+                            <li><a href="#">Prensa</a></li>
+                            <li><a href="#">Socios</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Términos</a></li>
+                            <li><a href="#">Privacidad</a></li>
+                            <li><a href="#">Cookies</a></li>
+                            <li><a href="#">DMCA</a></li>
+                            <li><a href="#">Aviso legal</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-12">
+                    <div class="footer-links">
+                        <h5>Ayuda</h5>
+                        <ul>
+                            <li><a href="#">Centro de ayuda</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Soporte</a></li>
+                            <li><a href="#">Contacto</a></li>
+                            <li><a href="#">Estado</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row align-items-center footer-bottom">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0 small">&copy; 2025 CINEBESTIAL. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="Mastercard">
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa">
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/PayPal.svg/2560px-PayPal.svg.png" alt="PayPal">
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Payoneer_logo.svg/2560px-Payoneer_logo.svg.png" alt="Payoneer">
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png" alt="Bitcoin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control bg-transparent text-white" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control bg-transparent text-white" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Recordarme</label>
+                        </div>
+                        <button type="submit" class="btn btn-gradient w-100">Ingresar</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="mb-1">¿No tienes cuenta? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#registerModal">Regístrate</a></p>
+                        <a href="#" class="text-decoration-none small">¿Olvidaste tu contraseña?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="registerModalLabel">Crear Cuenta</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control bg-transparent text-white" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control bg-transparent text-white" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control bg-transparent text-white" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" class="form-control bg-transparent text-white" id="registerConfirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">Acepto los <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-gradient w-100">Registrarse</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>¿Ya tienes cuenta? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal">Inicia Sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Términos -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Aceptación de los Términos</h6>
+                    <p class="small text-muted">Al utilizar nuestros servicios, usted acepta cumplir con estos términos y condiciones.</p>
+                    
+                    <h6 class="mt-4">2. Descripción del Servicio</h6>
+                    <p class="small text-muted">CINEBESTIAL ofrece servicios de streaming, IPTV y otros servicios digitales bajo suscripción.</p>
+                    
+                    <h6 class="mt-4">3. Registro y Cuenta</h6>
+                    <p class="small text-muted">Para acceder a ciertos servicios, deberá registrarse proporcionando información precisa y actualizada.</p>
+                    
+                    <h6 class="mt-4">4. Pagos y Facturación</h6>
+                    <p class="small text-muted">Los servicios son de pago y se facturarán según el plan seleccionado. No hay reembolsos por cancelaciones.</p>
+                    
+                    <h6 class="mt-4">5. Uso Aceptable</h6>
+                    <p class="small text-muted">El usuario se compromete a utilizar los servicios de manera legal y sin violar derechos de terceros.</p>
+                    
+                    <h6 class="mt-4">6. Propiedad Intelectual</h6>
+                    <p class="small text-muted">Todo el contenido proporcionado está protegido por derechos de autor y no puede ser redistribuido.</p>
+                    
+                    <h6 class="mt-4">7. Limitación de Responsabilidad</h6>
+                    <p class="small text-muted">CINEBESTIAL no se hace responsable por interrupciones del servicio fuera de su control.</p>
+                    
+                    <h6 class="mt-4">8. Modificaciones</h6>
+                    <p class="small text-muted">Nos reservamos el derecho de modificar estos términos en cualquier momento.</p>
+                    
+                    <h6 class="mt-4">9. Ley Aplicable</h6>
+                    <p class="small text-muted">Estos términos se rigen por las leyes de Perú.</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-gradient">Aceptar Términos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Producto -->
+    <div class="modal fade product-modal" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="productModalLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-gallery">
+                                <img src="" class="img-fluid rounded-3 mb-3" id="productMainImage" alt="Product Image">
+                                <div class="product-thumbnails">
+                                    <div class="product-thumbnail active">
+                                        <img src="" class="img-fluid" alt="Thumbnail 1">
+                                    </div>
+                                    <div class="product-thumbnail">
+                                        <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid" alt="Thumbnail 2">
+                                    </div>
+                                    <div class="product-thumbnail">
+                                        <img src="https://images.unsplash.com/photo-1611162616475-46592b3d8d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="img-fluid" alt="Thumbnail 3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="productTitle">Producto</h3>
+                            <div class="price-tag mb-3" id="productPrice">S/. 0.00/mes</div>
+                            <p class="text-muted" id="productDescription">Descripción del producto.</p>
+                            
+                            <h5 class="mt-4">Características</h5>
+                            <ul class="service-features" id="productFeatures">
+                                <li>Característica 1</li>
+                                <li>Característica 2</li>
+                                <li>Característica 3</li>
+                            </ul>
+                            
+                            <div class="d-flex align-items-center mt-4">
+                                <button class="btn btn-gradient ripple me-3" id="addToCartBtn">Añadir al Carrito</button>
+                                <button class="btn btn-outline-light ripple" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract me-2"></i>Términos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Plan -->
+    <div class="modal fade" id="planModal" tabindex="-1" aria-labelledby="planModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="planModalLabel">Seleccionar Plan</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 id="planTitle">Plan</h4>
+                    <div class="price-tag mb-3" id="planPrice">S/. 0.00/mes</div>
+                    
+                    <h5 class="mt-4">Beneficios</h5>
+                    <ul class="service-features" id="planFeatures">
+                        <li>Beneficio 1</li>
+                        <li>Beneficio 2</li>
+                        <li>Beneficio 3</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <button class="btn btn-gradient w-100 ripple" id="confirmPlanBtn">Confirmar Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Carrito -->
+    <div class="modal fade cart-modal" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="cartModalLabel">Tu Carrito</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table text-white">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItems">
+                                <!-- Los items del carrito se agregarán aquí dinámicamente -->
+                                <tr>
+                                    <td colspan="5" class="text-center py-4">Tu carrito está vacío</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <h5>Total: <span id="cartTotal">S/. 0.00</span></h5>
+                        <div>
+                            <button class="btn btn-outline-light me-2" data-bs-dismiss="modal">Seguir Comprando</button>
+                            <button class="btn btn-gradient" id="checkoutBtn">Finalizar Compra</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Pago -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="paymentModalLabel">Método de Pago</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="mb-3">Resumen de Compra</h5>
+                            <ul class="list-group list-group-flush mb-4" id="paymentSummary">
+                                <!-- Los items de compra se agregarán aquí -->
+                            </ul>
+                            <div class="d-flex justify-content-between">
+                                <h5>Total:</h5>
+                                <h5 id="paymentTotal">S/. 0.00</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="mb-3">Seleccionar Método</h5>
+                            <div class="list-group mb-3">
+                                <label class="list-group-item bg-transparent text-white border-secondary">
+                                    <input class="form-check-input me-2" type="radio" name="paymentMethod" value="credit" checked>
+                                    Tarjeta de Crédito/Débito
+                                </label>
+                                <label class="list-group-item bg-transparent text-white border-secondary">
+                                    <input class="form-check-input me-2" type="radio" name="paymentMethod" value="paypal">
+                                    PayPal
+                                </label>
+                                <label class="list-group-item bg-transparent text-white border-secondary">
+                                    <input class="form-check-input me-2" type="radio" name="paymentMethod" value="crypto">
+                                    Criptomonedas
+                                </label>
+                                <label class="list-group-item bg-transparent text-white border-secondary">
+                                    <input class="form-check-input me-2" type="radio" name="paymentMethod" value="transfer">
+                                    Transferencia Bancaria
+                                </label>
+                            </div>
+                            
+                            <div id="creditCardForm">
+                                <div class="mb-3">
+                                    <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                                    <input type="text" class="form-control bg-transparent text-white" id="cardNumber" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cardExpiry" class="form-label">Fecha de Expiración</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="cardExpiry" placeholder="MM/AA">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cardCvv" class="form-label">CVV</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="cardCvv" placeholder="123">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cardName" class="form-label">Nombre en la Tarjeta</label>
+                                    <input type="text" class="form-control bg-transparent text-white" id="cardName" placeholder="Nombre Apellido">
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="saveCard" checked>
+                                <label class="form-check-label" for="saveCard">
+                                    Guardar información para futuras compras
+                                </label>
+                            </div>
+                            
+                            <button class="btn btn-gradient w-100 ripple" id="confirmPaymentBtn">Confirmar Pago</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-body text-center p-5">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="mb-3">¡Pago Completado!</h3>
+                    <p class="mb-4">Tu compra ha sido procesada exitosamente. Recibirás un correo con los detalles de tu pedido.</p>
+                    <button class="btn btn-gradient" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS para animaciones al hacer scroll -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Scripts personalizados -->
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Inicializar tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        
+        // Cambiar clase del navbar al hacer scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Filtro de categorías
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remover clase active de todos los botones
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Agregar clase active al botón clickeado
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                const services = document.querySelectorAll('.service-item');
+                
+                services.forEach(service => {
+                    if (category === 'all' || service.getAttribute('data-category') === category) {
+                        service.style.display = 'block';
+                        service.setAttribute('data-aos', 'fade-up');
+                        AOS.refresh();
+                    } else {
+                        service.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Efecto ripple para botones
+        document.querySelectorAll('.ripple').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left;
+                const y = e.clientY - e.target.getBoundingClientRect().top;
+                
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        // Cambiar clase active del navbar al hacer scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Efecto de escritura en el hero
+        const typingElement = document.querySelector('.typing-effect');
+        const words = ['en un solo lugar', 'para toda la familia', 'sin límites', 'en HD/4K'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(type, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 50 : 100);
+            }
+        }
+        
+        // Iniciar el efecto de escritura
+        setTimeout(type, 1000);
+        
+        // Sistema de carrito
+        let cart = [];
+        const cartIcon = document.querySelector('.cart-icon');
+        const cartBadge = document.querySelector('.cart-badge');
+        
+        // Función para actualizar el carrito
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const paymentSummary = document.getElementById('paymentSummary');
+            const paymentTotal = document.getElementById('paymentTotal');
+            
+            let total = 0;
+            
+            // Limpiar el carrito
+            cartItemsContainer.innerHTML = '';
+            paymentSummary.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<tr><td colspan="5" class="text-center py-4">Tu carrito está vacío</td></tr>';
+                cartBadge.textContent = '0';
+                cartTotalElement.textContent = 'S/. 0.00';
+                paymentTotal.textContent = 'S/. 0.00';
+                return;
+            }
+            
+            // Agregar items al carrito
+            cart.forEach((item, index) => {
+                total += item.price;
+                
+                // Tabla del carrito
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="${item.image}" width="50" height="50" class="rounded me-3" alt="${item.name}">
+                            <span>${item.name}</span>
+                        </div>
+                    </td>
+                    <td>S/. ${item.price.toFixed(2)}</td>
+                    <td>1</td>
+                    <td>S/. ${item.price.toFixed(2)}</td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                cartItemsContainer.appendChild(row);
+                
+                // Resumen de pago
+                const summaryItem = document.createElement('li');
+                summaryItem.className = 'list-group-item bg-transparent text-white border-secondary d-flex justify-content-between';
+                summaryItem.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>S/. ${item.price.toFixed(2)}</span>
+                `;
+                paymentSummary.appendChild(summaryItem);
+            });
+            
+            // Actualizar totales
+            cartBadge.textContent = cart.length;
+            cartTotalElement.textContent = `S/. ${total.toFixed(2)}`;
+            paymentTotal.textContent = `S/. ${total.toFixed(2)}`;
+            
+            // Agregar evento a los botones de eliminar
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+        
+        // Agregar producto al carrito
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = JSON.parse(this.getAttribute('data-product'));
+                cart.push(product);
+                updateCart();
+                
+                // Mostrar notificación
+                const toast = document.createElement('div');
+                toast.className = 'position-fixed bottom-0 end-0 p-3';
+                toast.style.zIndex = '11';
+                toast.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success text-white">
+                            <strong class="me-auto">¡Producto agregado!</strong>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body bg-dark">
+                            ${product.name} ha sido añadido al carrito.
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(toast);
+                
+                // Eliminar la notificación después de 3 segundos
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            });
+        });
+        
+        // Modal de producto
+        const productModal = document.getElementById('productModal');
+        if (productModal) {
+            productModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget;
+                const productTitle = button.getAttribute('data-product');
+                
+                // Aquí podrías cargar más detalles del producto según el título
+                document.getElementById('productTitle').textContent = productTitle;
+                document.getElementById('productMainImage').src = button.closest('.service-card').querySelector('img').src;
+                document.getElementById('productPrice').textContent = button.closest('.service-card').querySelector('.price-tag').textContent;
+                document.getElementById('productDescription').textContent = button.closest('.service-card').querySelector('.card-text').textContent;
+                
+                // Clonar características
+                const featuresList = document.getElementById('productFeatures');
+                featuresList.innerHTML = '';
+                const originalFeatures = button.closest('.service-card').querySelectorAll('.service-features li');
+                originalFeatures.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature.textContent;
+                    featuresList.appendChild(li);
+                });
+                
+                // Configurar botón de añadir al carrito
+                const addToCartBtn = document.getElementById('addToCartBtn');
+                const originalAddToCart = button.closest('.service-actions').querySelector('.add-to-cart');
+                addToCartBtn.setAttribute('data-product', originalAddToCart.getAttribute('data-product'));
+            });
+        }
+        
+        // Modal de plan
+        const planModal = document.getElementById('planModal');
+        if (planModal) {
+            planModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget;
+                const planTitle = button.getAttribute('data-plan');
+                
+                document.getElementById('planTitle').textContent = planTitle;
+                
+                // Configurar precio y características según el plan
+                let price = 'S/. 0.00/mes';
+                let features = [];
+                
+                if (planTitle === 'Básico') {
+                    price = 'S/. 39.99/mes';
+                    features = [
+                        '1 servicio a elegir',
+                        '1 dispositivo',
+                        'Soporte básico',
+                        'Sin panel',
+                        'Sin descuentos'
+                    ];
+                } else if (planTitle === 'Estándar') {
+                    price = 'S/. 89.99/mes';
+                    features = [
+                        '3 servicios a elegir',
+                        '3 dispositivos',
+                        'Soporte prioritario',
+                        'Panel básico',
+                        '10% descuento'
+                    ];
+                } else if (planTitle === 'Premium') {
+                    price = 'S/. 179.99/mes';
+                    features = [
+                        'Todos los servicios',
+                        'Dispositivos ilimitados',
+                        'Soporte 24/7 VIP',
+                        'Panel completo',
+                        '25% descuento',
+                        'Asesor personal'
+                    ];
+                }
+                
+                document.getElementById('planPrice').textContent = price;
+                
+                const featuresList = document.getElementById('planFeatures');
+                featuresList.innerHTML = '';
+                features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+            });
+        }
+        
+        // Finalizar compra
+        document.getElementById('checkoutBtn')?.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
+            cartModal.hide();
+            
+            const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+            paymentModal.show();
+        });
+        
+        // Confirmar pago
+        document.getElementById('confirmPaymentBtn')?.addEventListener('click', function() {
+            const paymentModal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
+            paymentModal.hide();
+            
+            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+            confirmationModal.show();
+            
+            // Vaciar el carrito después de pagar
+            cart = [];
+            updateCart();
+        });
+        
+        // Confirmar plan
+        document.getElementById('confirmPlanBtn')?.addEventListener('click', function() {
+            const planModal = bootstrap.Modal.getInstance(document.getElementById('planModal'));
+            planModal.hide();
+            
+            // Aquí podrías redirigir al proceso de pago o registro
+            const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+            registerModal.show();
+        });
+        
+        // Formulario de contacto
+        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+        
+        // Formulario de registro
+        document.getElementById('registerForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
+            const registerModal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+            registerModal.hide();
+            this.reset();
+        });
+        
+        // Formulario de login
+        document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Inicio de sesión exitoso.');
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            loginModal.hide();
+            this.reset();
+        });
+        
+        // Efecto de partículas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Tamaño aleatorio entre 3px y 8px
+                const size = Math.random() * 5 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posición aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-${size}px`;
+                
+                // Duración de animación aleatoria
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Retraso aleatorio
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Crear partículas cuando el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', createParticles);
+        
+        // Cambiar imagen de producto al hacer clic en miniatura
+        document.querySelectorAll('.product-thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                const thumbnails = this.parentElement.querySelectorAll('.product-thumbnail');
+                thumbnails.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const mainImage = this.closest('.product-gallery').querySelector('#productMainImage');
+                mainImage.src = this.querySelector('img').src;
+            });
+        });
+    </script>
+</body>
+</html>
