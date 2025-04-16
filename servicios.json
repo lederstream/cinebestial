@@ -1,0 +1,146 @@
+{
+  "servicios": [
+    {
+      "nombre": "Netflix Premium",
+      "descripcion": "Alquiler de Cuenta",
+      "imagen": "images/netflix.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "5 perfiles / 4 pantallas",
+        "Sin geobloqueo",
+        "Incluye web para códigos"],
+      "planes": [
+        {"meses": 1, "precio": 30.00},
+        {"meses": 3, "precio": 80.00}
+      ]
+    },
+
+    {
+      "nombre": "Disney+ Premium",
+      "descripcion": "Cuenta a Dominio Anual con garantía de:",
+      "imagen": "images/disney.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Nueva / Renovación",
+        "Disney+, Star+ y ESPN",
+        "7 perfiles / 4 pantallas"],
+      "planes": [
+        {"meses": 0, "precio": 20.00},
+        {"meses": 2, "precio": 55.00}
+      ]
+    },
+    {
+      "nombre": "Paramount Premium",
+      "descripcion": "Cuenta de alquiler:",
+      "imagen": "images/paramount.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Renovable y buen contenido",
+        "Todos los beneficios del premium",
+        "Garantía del tiempo contratado"],
+      "planes": [
+        {"meses": 1, "precio": 12.00},
+        {"meses": 3, "precio": 30.00},
+        {"meses": 6, "precio": 51.00}
+      ]
+    },
+    {
+      "nombre": "Paramount Premium",
+      "descripcion": "Cuenta a Dominio con garantía de:",
+      "imagen": "images/paramount.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Nueva / Renovación.",
+        "Todos los beneficios del premium",
+        "Facturación Anual"],
+      "planes": [
+        {"meses": 0, "precio": 12.00},
+        {"meses": 6, "precio": 60.00}
+      ]
+    },
+    {
+      "nombre": "Mica Play",
+      "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
+      "imagen": "images/micaplay.webp",
+      "categoria": "iptv",
+      "caracteristicas": [
+        "App propia para Android y Roku",
+        "4,500+ canales en vivo",
+        "33,000+ películas / 4,500+ series"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 10.00},
+        {"meses": 3,"precio": 24.00},
+        {"meses": 6,"precio": 42.00},
+        {"meses": 12,"precio": 72.00}
+      ]
+    },
+    {
+      "nombre": "Flujo Tv",
+      "descripcion": "El mejor contenido solo aquí. Con app propia disponible en Android",
+      "imagen": "images/flujotv.webp",
+      "categoria": "iptv",
+      "caracteristicas": [
+        "App propia para Android",
+        "5,500+ canales en vivo",
+        "38,000+ películas / 4,500+ series"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 18.00},
+        {"meses": 3,"precio": 51.00},
+        {"meses": 7,"precio": 102.00},
+        {"meses": 14,"precio": 190.00}
+      ]
+    },
+    {
+      "nombre": "Tele Latino",
+      "descripcion": "El mejor contenido solo aquí",
+      "imagen": "images/telelatino.webp",
+      "categoria": "iptv",
+      "caracteristicas": [
+        "El mejor entretenimiento Latino",
+        "5,500+ canales en vivo",
+        "38,000+ películas / 4,500+ series"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 17.00},
+        {"meses": 3,"precio": 48.00},
+        {"meses": 6,"precio": 90.00},
+        {"meses": 9,"precio": 126.00}
+      ]
+    },
+    {
+      "nombre": "Smart Fit",
+      "descripcion": "El mejor gymnasio para ti.",
+      "imagen": "images/smartfit.webp",
+      "categoria": "iptv",
+      "caracteristicas": [
+        "Pago de mensualidades",
+        "Pago de deudas",
+        "Elige tu plan"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 60.00},
+        {"meses": 2,"precio": 100.00},
+        {"meses": 3,"precio": 120.00}
+      ]
+    },
+    {
+      "nombre": "Mica Play",
+      "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
+      "imagen": "images/micaplay.webp",
+      "categoria": "iptv",
+      "caracteristicas": [
+        "App propia para Android y Roku",
+        "Panel Reseller",
+        "Administra cuentas"
+      ],
+      "planes": [
+        {"creditos": 10,"precio": 60.00},
+        {"creditos": 30,"precio": 150.00},
+        {"creditos": 60,"precio": 240.00},
+        {"creditos": 100,"precio": 350.00}
+      ]
+    }
+  ]
+}

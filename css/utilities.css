@@ -1,0 +1,25 @@
+/* Text Utilities */
+.text-gradient {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Spacing Utilities */
+.p-0 { padding: 0 !important; }
+.py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+
+/* Display Utilities */
+.d-flex { display: flex !important; }
+.justify-center { justify-content: center !important; }
+
+/* Border Utilities */
+.rounded { border-radius: var(--border-radius) !important; }
+
+/* Shadow Utilities */
+.shadow { box-shadow: var(--shadow-sm) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+
+/* Transition Utilities */
+.transition { transition: all 0.3s ease !important; }

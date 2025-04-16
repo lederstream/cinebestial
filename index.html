@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CINEBESTIAL - Servicios digitales premium de streaming, IPTV y entretenimiento">
+    <title>CINEBESTIAL - Servicios Digitales Premium</title>
+
+    <!-- Preconnect para fuentes y CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Futuristas -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/currency-switcher.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/utilities.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.webp" type="favicon">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Carrito flotante -->
+    <button class="cart-icon ripple" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Ver carrito de compras">
+        <div class="cart-pulse"></div>
+        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+        <span class="cart-badge">0</span>
+    </button>
+    
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold animate__animated animate__fadeInLeft" href="#inicio">
+                <span class="logo">
+                    <i class="fas fa-play-circle me-2" aria-hidden="true"></i>CINE<span class="text-gradient">BESTIAL</span>
+                </span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavBarra" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="NavBarra">
+                <ul class="navbar-nav ms-auto animate__animated animate__fadeInRight">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-user me-1" aria-hidden="true"></i>Iniciar Sesión
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="ms-3 animate__animated animate__fadeInRight">
+                    <button class="btn btn-gradient rounded-pill ripple" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <i class="fas fa-rocket me-1" aria-hidden="true"></i>Registrarse
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section con Carrusel -->
+    <section id="inicio" class="hero-section">
+        <div class="particles" id="particles"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner rounded-4 overflow-hidden">
+                    <div class="carousel-item active">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">
+                                    Todo el entretenimiento <span class="typing-effect"></span>
+                                </h1>
+                                <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+                                    Streaming, IPTV, paneles y música premium con los mejores planes.
+                                </p>
+                                <div class="d-flex gap-3 animate__animated animate__fadeInUp animate__delay-2s">
+                                    <button class="btn btn-gradient btn-lg ripple" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                        <i class="fas fa-rocket me-2"></i>Comenzar Ahora
+                                    </button>
+                                    <button class="btn btn-outline-light btn-lg ripple" href="#servicios">
+                                        <i class="fas fa-eye me-2"></i>Explorar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <div class="hero-img-container">
+                                    <img src="images/banner1.webp" alt="Hero Image" class="img-fluid rounded-4 shadow-lg hover-3d">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <h1 class="display-4 fw-bold mb-4">Servicios Premium</h1>
+                                <p class="lead mb-4">Accede a contenido exclusivo desde la comodidad de tu hogar.</p>
+                                <button class="btn btn-gradient btn-lg ripple" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                    <i class="fas fa-film me-2"></i>Ver Catálogo
+                                </button>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <div class="hero-img-container">
+                                    <img src="images/banner2.webp" alt="Servicios" class="img-fluid rounded-4 shadow-lg hover-3d">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <h1 class="display-4 fw-bold mb-4">Experiencia sin límites</h1>
+                                <p class="lead mb-4">La mejor calidad y variedad para todos tus dispositivos.</p>
+                                <button class="btn btn-gradient btn-lg ripple" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                    <i class="fas fa-bolt me-2"></i>Comenzar Ahora
+                                </button>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <div class="hero-img-container">
+                                    <img src="images/banner3.webp" alt="Experiencia" class="img-fluid rounded-4 shadow-lg hover-3d">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator animate__animated animate__fadeIn animate__delay-3s">
+            <a href="#servicios" class="text-white">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="arrow-down"></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección de Estadísticas -->
+    <section class="py-5 stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up">
+                    <div class="stat-card h-100">
+                        <div class="stat-number" data-count="10000">0</div>
+                        <p class="mb-0">Clientes satisfechos</p>
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-wave"></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card h-100">
+                        <div class="stat-number" data-count="50">0</div>
+                        <p class="mb-0">Servicios disponibles</p>
+                        <div class="stat-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div class="stat-wave"></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card h-100">
+                        <div class="stat-number">24/7</div>
+                        <p class="mb-0">Soporte técnico</p>
+                        <div class="stat-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="stat-wave"></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card h-100">
+                        <div class="stat-number" data-count="99">0</div>
+                        <p class="mb-0">% Tiempo activo</p>
+                        <div class="stat-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="stat-wave"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios por Categorías -->
+    <section id="servicios" class="py-5 services-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Descubre todo lo que tenemos para ofrecerte</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <!-- Filtro de categorías -->
+            <div class="category-filter" data-aos="fade-up" data-aos-delay="100">
+                <button class="category-btn active" data-category="all">Todos</button>
+                <button class="category-btn" data-category="streaming">
+                    <i class="fas fa-film me-1"></i> Streaming
+                </button>
+                <button class="category-btn" data-category="iptv">
+                    <i class="fas fa-tv me-1"></i> IPTV
+                </button>
+                <button class="category-btn" data-category="paneles">
+                    <i class="fas fa-desktop me-1"></i> Paneles
+                </button>
+                <button class="category-btn" data-category="musica">
+                    <i class="fas fa-music me-1"></i> Música
+                </button>
+                <button class="category-btn" data-category="otros">
+                    <i class="fas fa-ellipsis-h me-1"></i> Otros
+                </button>
+            </div>
+
+            <!-- Contenedor de servicios (se llena dinámicamente) -->
+            <div class="row g-4 services-container">
+            </div>    
+        </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section id="testimonios" class="py-5 testimonials-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">Experiencias reales de nuestros usuarios satisfechos</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/100/100?random=24" class="testimonial-img me-3" alt="Cliente 1">
+                            <div>
+                                <h5 class="mb-0">Carlos Mendoza</h5>
+                                <small class="text-muted">Usuario desde 2023</small>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-0">"Excelente servicio, llevo más de un año con ellos y nunca he tenido problemas. La atención al cliente es rápida y efectiva."</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/100/100?random=25" class="testimonial-img me-3" alt="Cliente 2">
+                            <div>
+                                <h5 class="mb-0">María López</h5>
+                                <small class="text-muted">Usuario desde 2024</small>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="mb-0">"El mejor precio que he encontrado para todos los servicios de streaming. La calidad es impecable y nunca se cae."</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/100/100?random=26" class="testimonial-img me-3" alt="Cliente 3">
+                            <div>
+                                <h5 class="mb-0">Juan Pérez</h5>
+                                <small class="text-muted">Usuario desde 2022</small>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-0">"Increíble variedad de contenido, especialmente el IPTV con todos los canales deportivos. Lo recomiendo 100%."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de FAQ -->
+    <section id="faq" class="py-5 faq-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Resuelve tus dudas sobre nuestros servicios</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3 border-0">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <i class="fas fa-question-circle me-2"></i> ¿Cómo funciona el servicio?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Una vez que adquieres tu plan, recibirás las credenciales de acceso a tu correo electrónico. Puedes usar estas credenciales en cualquier dispositivo compatible con el servicio contratado.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="fas fa-credit-card me-2"></i> ¿Qué métodos de pago aceptan?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Aceptamos transferencias bancarias, PayPal, Yape, Plin y criptomonedas. Una vez realizado el pago, debes enviarnos el comprobante por WhatsApp para activar tu servicio.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="fas fa-shield-alt me-2"></i> ¿Ofrecen garantía?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sí, ofrecemos garantía de 7 días para todos nuestros servicios. Si experimentas algún problema durante este periodo, podemos reemplazar tu cuenta o realizar un reembolso.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <i class="fas fa-headset me-2"></i> ¿Cómo es el soporte técnico?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Nuestro soporte técnico está disponible 24/7 a través de WhatsApp. Respondemos en menos de 1 hora durante el día y en menos de 3 horas durante la noche.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    <i class="fas fa-users me-2"></i> ¿Puedo compartir mi cuenta?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Depende del servicio. Algunas plataformas permiten compartir la cuenta con un número limitado de dispositivos, mientras que otras tienen restricciones. Te asesoraremos sobre las mejores opciones según tus necesidades.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-5 contact-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-subtitle">¿Tienes alguna pregunta? Estamos aquí para ayudarte.</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row g-4">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="contact-info-card h-100">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <h5>Teléfono</h5>
+                                <p>+51 926 447 926</p>
+                                <a href="tel:+51926447926" class="btn btn-outline-light btn-sm ripple">
+                                    <i class="fas fa-phone me-1"></i>Llamar ahora
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="contact-info-card h-100">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h5>Email</h5>
+                                <p>info@cinebestial.top</p>
+                                <a href="mailto:info@cinebestial.top" class="btn btn-outline-light btn-sm ripple">
+                                    <i class="fas fa-envelope me-1"></i>Enviar email
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="contact-info-card h-100">
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <h5>WhatsApp</h5>
+                                <p>Chat directo</p>
+                                <a href="https://wa.me/51926447926" class="btn btn-outline-light btn-sm ripple">
+                                    <i class="fab fa-whatsapp me-1"></i>Enviar mensaje
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="mt-5 contact-form" data-aos="fade-up" data-aos-delay="400" id="contactForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contactName" class="form-label">Nombre Completo</label>
+                                    <input type="text" class="form-control bg-transparent text-white" id="contactName" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contactEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control bg-transparent text-white" id="contactEmail" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="contactSubject" class="form-label">Asunto</label>
+                                    <input type="text" class="form-control bg-transparent text-white" id="contactSubject">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="contactMessage" class="form-label">Mensaje</label>
+                                    <textarea class="form-control bg-transparent text-white" id="contactMessage" rows="4" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-gradient ripple px-5">
+                                    <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">CINE<span class="text-gradient">BESTIAL</span></div>
+                    <p class="text-muted">La mejor plataforma de streaming y servicios digitales premium en Perú.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Servicios</h5>
+                        <ul>
+                            <li><a href="#">Streaming</a></li>
+                            <li><a href="#">IPTV</a></li>
+                            <li><a href="#">Paneles</a></li>
+                            <li><a href="#">Música</a></li>
+                            <li><a href="#">VPN</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Empresa</h5>
+                        <ul>
+                            <li><a href="#">Nosotros</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Carreras</a></li>
+                            <li><a href="#">Prensa</a></li>
+                            <li><a href="#">Socios</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Términos</a></li>
+                            <li><a href="#">Privacidad</a></li>
+                            <li><a href="#">Cookies</a></li>
+                            <li><a href="#">DMCA</a></li>
+                            <li><a href="#">Aviso legal</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-12">
+                    <div class="footer-links">
+                        <h5>Ayuda</h5>
+                        <ul>
+                            <li><a href="#">Centro de ayuda</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Soporte</a></li>
+                            <li><a href="#">Contacto</a></li>
+                            <li><a href="#">Estado</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row align-items-center footer-bottom">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0 small">&copy; 2025 CINEBESTIAL. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="Mastercard">
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa">
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/PayPal.svg/2560px-PayPal.svg.png" alt="PayPal">
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png" alt="Bitcoin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="loginModalLabel">
+                        <i class="fas fa-user-circle me-2"></i>Iniciar Sesión
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-4">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control bg-transparent text-white" id="loginEmail" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control bg-transparent text-white" id="loginPassword" required>
+                            </div>
+                        </div>
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Recordarme</label>
+                            <a href="#" class="float-end text-decoration-none">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <button type="submit" class="btn btn-gradient w-100 ripple">
+                            <i class="fas fa-sign-in-alt me-2"></i>Ingresar
+                        </button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <p class="mb-1">¿No tienes cuenta? <a href="#" class="text-gradient text-decoration-none" data-bs-toggle="modal" data-bs-target="#registerModal">Regístrate</a></p>
+                        <p>o inicia sesión con</p>
+                        <div class="social-login">
+                            <button class="btn btn-outline-light ripple">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button class="btn btn-outline-light ripple">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="btn btn-outline-light ripple">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="registerModalLabel">
+                        <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nombre Completo</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control bg-transparent text-white" id="registerName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control bg-transparent text-white" id="registerEmail" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control bg-transparent text-white" id="registerPassword" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">Confirmar Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control bg-transparent text-white" id="registerConfirmPassword" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">Acepto los <a href="#" class="text-gradient text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-gradient w-100 ripple">
+                            <i class="fas fa-user-plus me-2"></i>Registrarse
+                        </button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <p>¿Ya tienes cuenta? <a href="#" class="text-gradient text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal">Inicia Sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Términos -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="termsModalLabel">
+                        <i class="fas fa-file-contract me-2"></i>Términos y Condiciones
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Aceptación de los Términos</h6>
+                    <p class="small text-muted">Al utilizar nuestros servicios, usted acepta cumplir con estos términos y condiciones.</p>
+                    
+                    <h6 class="mt-4">2. Descripción del Servicio</h6>
+                    <p class="small text-muted">CINEBESTIAL ofrece servicios de streaming, IPTV y otros servicios digitales bajo suscripción.</p>
+                    
+                    <h6 class="mt-4">3. Registro y Cuenta</h6>
+                    <p class="small text-muted">Para acceder a ciertos servicios, deberá registrarse proporcionando información precisa y actualizada.</p>
+                    
+                    <h6 class="mt-4">4. Pagos y Facturación</h6>
+                    <p class="small text-muted">Los servicios son de pago y se facturarán según el plan seleccionado. No hay reembolsos por cancelaciones.</p>
+                    
+                    <h6 class="mt-4">5. Uso Aceptable</h6>
+                    <p class="small text-muted">El usuario se compromete a utilizar los servicios de manera legal y sin violar derechos de terceros.</p>
+                    
+                    <h6 class="mt-4">6. Propiedad Intelectual</h6>
+                    <p class="small text-muted">Todo el contenido proporcionado está protegido por derechos de autor y no puede ser redistribuido.</p>
+                    
+                    <h6 class="mt-4">7. Limitación de Responsabilidad</h6>
+                    <p class="small text-muted">CINEBESTIAL no se hace responsable por interrupciones del servicio fuera de su control.</p>
+                    
+                    <h6 class="mt-4">8. Modificaciones</h6>
+                    <p class="small text-muted">Nos reservamos el derecho de modificar estos términos en cualquier momento.</p>
+                    
+                    <h6 class="mt-4">9. Ley Aplicable</h6>
+                    <p class="small text-muted">Estos términos se rigen por las leyes de Perú.</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-gradient">Aceptar Términos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Producto -->
+    <div class="modal fade product-modal" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="productModalLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-gallery">
+                                <img src="" class="img-fluid rounded-3 mb-3" id="productMainImage" alt="Imagen del Producto">
+                                <div class="product-thumbnails">
+                                    <div class="product-thumbnail active">
+                                        <img src="" class="img-fluid" alt="Thumbnail 1">
+                                    </div>
+                                    <div class="product-thumbnail">
+                                        <img src="https://picsum.photos/200/200?random=1" class="img-fluid" alt="Thumbnail 2">
+                                    </div>
+                                    <div class="product-thumbnail">
+                                        <img src="https://picsum.photos/200/200?random=2" class="img-fluid" alt="Thumbnail 3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="productTitle">Producto</h3>
+                            <div class="price-tag mb-3" id="productPrice">S/. 0.00/mes</div>
+                            <p class="text-muted" id="productDescription">Descripción del producto.</p>
+                            
+                            <h5 class="mt-4">Características</h5>
+                            <ul class="service-features" id="productFeatures">
+                                <li><i class="fas fa-check-circle"></i> Característica 1</li>
+                                <li><i class="fas fa-check-circle"></i> Característica 2</li>
+                                <li><i class="fas fa-check-circle"></i> Característica 3</li>
+                            </ul>
+                            
+                            <div class="d-flex align-items-center mt-4">
+                                <button class="btn btn-gradient ripple me-3" id="addToCartBtn">
+                                    <i class="fas fa-cart-plus me-2"></i>Añadir al Carrito
+                                </button>
+                                <button class="btn btn-outline-light ripple" data-bs-toggle="modal" data-bs-target="#termsModal">
+                                    <i class="fas fa-file-contract me-2"></i>Términos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Carrito -->
+    <div class="modal fade cart-modal" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="fas fa-shopping-cart me-2"></i> Tu Carrito
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItems">
+                                <tr>
+                                    <td colspan="5" class="text-center py-4">Tu carrito está vacío</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <h5>Total: <span id="cartTotal">S/. 0.00</span></h5>
+                        <div>
+                            <button class="btn btn-outline-light me-2" data-bs-dismiss="modal">
+                                <i class="fas fa-arrow-left me-1"></i>Seguir Comprando
+                            </button>
+                            <button class="btn btn-gradient" id="checkoutBtn">
+                                <i class="fas fa-check me-1"></i>Finalizar Compra
+                            </button>
+                        </div>
+                            <!-- Sección de pago con QR -->
+                        <div class="text-center mt-3" id="pagoManual" style="display: none;">
+                            <h5>Paga con Yape o Plin</h5>
+                            <p>Escanea el código y envía el comprobante al WhatsApp:</p>
+                            <strong class="text-primary">+51 926 447 926</strong>
+                            <br>
+                            <img src="images/yape.png" alt="QR de Yape" class="img-fluid mt-2" style="max-width: 200px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Modal de Confirmación -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="confirmation-icon mb-4">
+                        <div class="checkmark">
+                            <div class="checkmark__circle"></div>
+                            <div class="checkmark__check"></div>
+                        </div>
+                    </div>
+                    <h3 class="mb-3">¡Pedido Confirmado!</h3>
+                    <p class="mb-4">Tu pedido ha sido registrado correctamente. Por favor comunícate con nosotros por WhatsApp para completar tu compra.</p>
+                    <a href="https://wa.me/51926447926" class="btn whatsapp-btn ripple mb-3 w-100">
+                        <i class="fab fa-whatsapp me-2"></i> Contactar por WhatsApp
+                    </a>
+                    <button class="btn btn-outline-light w-100" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i>Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS para animaciones al hacer scroll -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Scripts personalizados -->
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/servicios.js"></script>
+</body>
+</html>
