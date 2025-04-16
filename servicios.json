@@ -16,17 +16,17 @@
     },
 
     {
-      "nombre": "Disney+ Premium",
-      "descripcion": "Cuenta a Dominio Anual con garantía de:",
+      "nombre": "Disney+ Estándar",
+      "descripcion": "Cuenta a Dominio Trimestral con garantía de:",
       "imagen": "images/disney.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Nueva / Renovación",
         "Disney+, Star+ y ESPN",
-        "7 perfiles / 4 pantallas"],
+        "7 perfiles"],
       "planes": [
-        {"meses": 0, "precio": 20.00},
-        {"meses": 2, "precio": 55.00}
+        {"meses": 1, "precio": 18.00},
+        {"meses": 3, "precio": 45.00}
       ]
     },
     {
