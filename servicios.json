@@ -58,6 +58,19 @@
       ]
     },
     {
+      "nombre": "Max Estándar",
+      "descripcion": "Cuenta a Dominio con garantía de:",
+      "imagen": "images/max.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Nueva / Renovación",
+        "Todo el contenido exclusivo para ti.",
+        "Posible autopay"],
+      "planes": [
+        {"meses": 0, "precio": 9.00}
+      ]
+    },
+    {
       "nombre": "Disney+ Estándar",
       "descripcion": "Cuenta a Dominio Trimestral con garantía de:",
       "imagen": "images/disney.webp",
