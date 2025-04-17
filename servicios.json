@@ -2,7 +2,7 @@
   "servicios": [
     {
       "nombre": "Netflix Premium",
-      "descripcion": "Alquiler de Cuenta",
+      "descripcion": "Cuenta de alquiler:",
       "imagen": "images/netflix.webp",
       "categoria": "streaming",
       "caracteristicas": [
@@ -12,21 +12,6 @@
       "planes": [
         {"meses": 1, "precio": 30.00},
         {"meses": 3, "precio": 80.00}
-      ]
-    },
-
-    {
-      "nombre": "Disney+ Estándar",
-      "descripcion": "Cuenta a Dominio Trimestral con garantía de:",
-      "imagen": "images/disney.webp",
-      "categoria": "streaming",
-      "caracteristicas": [
-        "Nueva / Renovación",
-        "Disney+, Star+ y ESPN",
-        "7 perfiles"],
-      "planes": [
-        {"meses": 1, "precio": 18.00},
-        {"meses": 3, "precio": 45.00}
       ]
     },
     {
@@ -42,6 +27,20 @@
         {"meses": 1, "precio": 12.00},
         {"meses": 3, "precio": 30.00},
         {"meses": 6, "precio": 51.00}
+      ]
+    },
+    {
+      "nombre": "Disney+ Estándar",
+      "descripcion": "Cuenta a Dominio Trimestral con garantía de:",
+      "imagen": "images/disney.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Nueva / Renovación",
+        "Disney+, Star+ y ESPN",
+        "Facturación trimestral"],
+      "planes": [
+        {"meses": 1, "precio": 18.00},
+        {"meses": 3, "precio": 45.00}
       ]
     },
     {
@@ -113,7 +112,7 @@
       "nombre": "Smart Fit",
       "descripcion": "El mejor gymnasio para ti.",
       "imagen": "images/smartfit.webp",
-      "categoria": "iptv",
+      "categoria": "otros",
       "caracteristicas": [
         "Pago de mensualidades",
         "Pago de deudas",
@@ -129,17 +128,256 @@
       "nombre": "Mica Play",
       "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
       "imagen": "images/micaplay.webp",
-      "categoria": "iptv",
+      "categoria": "paneles",
       "caracteristicas": [
-        "App propia para Android y Roku",
         "Panel Reseller",
-        "Administra cuentas"
+        "Crea y activa cuentas",
+        "Administra cuentas y clientes"
       ],
       "planes": [
-        {"creditos": 10,"precio": 60.00},
-        {"creditos": 30,"precio": 150.00},
-        {"creditos": 60,"precio": 240.00},
-        {"creditos": 100,"precio": 350.00}
+        {"creditos": 10,"precio": 65.00},
+        {"creditos": 20,"precio": 120.00},
+        {"creditos": 30,"precio": 165.00},
+        {"creditos": 50,"precio": 250.00}
+      ]
+    },
+    {
+      "nombre": "Mica Play",
+      "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
+      "imagen": "images/micaplay.webp",
+      "categoria": "paneles",
+      "caracteristicas": [
+        "Panel Super Reseller",
+        "Crea Resellers",
+        "Vende créditos"
+      ],
+      "planes": [
+        {"creditos": 100,"precio": 400.00},
+        {"creditos": 200,"precio": 700.00},
+        {"creditos": 300,"precio": 900.00}
+      ]
+    },
+    {
+      "nombre": "Mica Play",
+      "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
+      "imagen": "images/micaplay.webp",
+      "categoria": "paneles",
+      "caracteristicas": [
+        "Panel Admin",
+        "Crea Resellers y Super Resellers",
+        "Vende créditos"
+      ],
+      "planes": [
+        {"creditos": 500,"precio": 1000.00},
+        {"creditos": 1000,"precio": 1500.00},
+        {"creditos": 2000,"precio": 2000.00}
+      ]
+    },
+    {
+      "nombre": "Flujo Tv",
+      "descripcion": "Tu cine en casa, disponible en Android. PRIMERA COMPRA MÍNIMA PARA EL PANEL ES DE 30 CRÉDITOS",
+      "imagen": "images/flujotv.webp",
+      "categoria": "paneles",
+      "caracteristicas": [
+        "Panel Reseller",
+        "Crea y activa cuentas",
+        "Administra cuentas y clientes"
+      ],
+      "planes": [
+        {"creditos": 10,"precio": 150.00},
+        {"creditos": 20,"precio": 280.00},
+        {"creditos": 30,"precio": 360.00}
+      ]
+    },
+    {
+      "nombre": "Flujo Tv",
+      "descripcion": "Tu cine en casa, disponible en Android",
+      "imagen": "images/flujotv.webp",
+      "categoria": "paneles",
+      "caracteristicas": [
+        "Panel Super Reseller",
+        "Crea Resellers",
+        "Vende créditos"
+      ],
+      "planes": [
+        {"creditos": 50,"precio": 600.00},
+        {"creditos": 100,"precio": 1100.00},
+        {"creditos": 300,"precio": 3000.00}
+      ]
+    },
+    {
+      "nombre": "Flujo Tv",
+      "descripcion": "Tu cine en casa, disponible en Android",
+      "imagen": "images/flujotv.webp",
+      "categoria": "paneles",
+      "caracteristicas": [
+        "Panel Admin",
+        "Crea Resellers y Super Resellers",
+        "Vende créditos"
+      ],
+      "planes": [
+        {"creditos": 500,"precio": 4500.00},
+        {"creditos": 1000,"precio": 8000.00},
+        {"creditos": 2000,"precio": 14000.00}
+      ]
+    },
+    {
+      "nombre": "Tele Latino",
+      "descripcion": "Compatible en Windows y Android",
+      "imagen": "images/telelatino.webp",
+      "categoria": "paneles",
+      "caracteristicas": [
+        "Panel",
+        "Creas otros paneles",
+        "Vende créditos y activa cuentas"
+      ],
+      "planes": [
+        {"creditos": 5,"precio": 75.00},
+        {"creditos": 10,"precio": 140.00},
+        {"creditos": 20,"precio": 260.00},
+        {"creditos": 30,"precio": 360.00},
+        {"creditos": 50,"precio": 550.00},
+        {"creditos": 100,"precio": 1000.00}
+      ]
+    },
+    {
+      "nombre": "El Profe Net",
+      "descripcion": "Compatible con Roku,Lg, samsung, Android y iOS",
+      "imagen": "images/profenet.webp",
+      "categoria": "iptv",
+      "caracteristicas": [
+        "Disfrute del contenido",
+        "Cuentas de 30 días",
+        "Lo mejor del cine"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 14.00},
+        {"meses": 3,"precio": 39.00},
+        {"meses": 6,"precio": 72.00}
+      ]
+    },
+    {
+      "nombre": "El Profe Net",
+      "descripcion": "Compatible con Roku,Lg, samsung, Android y iOS",
+      "imagen": "images/profenet.webp",
+      "categoria": "paneles",
+      "caracteristicas": [
+        "Panel (primera compra mínima de 50 créditos)",
+        "Creas otros paneles",
+        "Vende créditos y activa cuentas"
+      ],
+      "planes": [
+        {"creditos": 10,"precio": 75.00},
+        {"creditos": 20,"precio": 140.00},
+        {"creditos": 30,"precio": 260.00},
+        {"creditos": 50,"precio": 360.00},
+        {"creditos": 100,"precio": 550.00}
+      ]
+    },
+    {
+      "nombre": "Apple Tv",
+      "descripcion": "Cuenta a Dominio",
+      "imagen": "images/appletv.webp",
+      "categoria": "musica",
+      "caracteristicas": [
+        "Solo Nuevas",
+        "Disfruta del contenido",
+        "Quieres con correo? ($0.5 adicional)"
+      ],
+      "planes": [
+        {"meses": 3,"precio": 18.00}
+      ]
+    },
+    {
+      "nombre": "Apple Music",
+      "descripcion": "Cuenta a Dominio",
+      "imagen": "images/applemusic.webp",
+      "categoria": "musica",
+      "caracteristicas": [
+        "Solo Nuevas",
+        "Disfruta del contenido",
+        "Quieres con correo? ($0.5 adicional)"
+      ],
+      "planes": [
+        {"meses": 3,"precio": 18.00}
+      ]
+    },
+    {
+      "nombre": "Apple Tv + Apple Music",
+      "descripcion": "Cuenta a Dominio",
+      "imagen": "images/comboapple.webp",
+      "categoria": "musica",
+      "caracteristicas": [
+        "Solo Nuevas",
+        "Disfruta 2 servicios apple",
+        "Quieres con correo? ($0.5 adicional)"
+      ],
+      "planes": [
+        {"meses": 3,"precio": 28.00}
+      ]
+    },
+    {
+      "nombre": "WA Sender",
+      "descripcion": "Envío de mensajería masiva y personalizada",
+      "imagen": "images/wasender.webp",
+      "categoria": "otros",
+      "caracteristicas": [
+        "Se entrega LICENCIA.",
+        "Ideal para promocionarte",
+        "Fideliza clientes con mensajes.",
+        "Descarga el programa en tu computador y listo"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 8.00},
+        {"meses": 6,"precio": 36.00},
+        {"meses": 12,"precio": 50.00}
+      ]
+    },
+    {
+      "nombre": "CRM (local / extensión)",
+      "descripcion": "Gestión del negocio y clientes desde cualquier navegador rápido y personalizado",
+      "imagen": "images/crm.webp",
+      "categoria": "otros",
+      "caracteristicas": [
+        "Se entrega LICENCIA única con tu número",
+        "Gestiona clientes, ventas, seguimientos y más.",
+        "Pega el archivo en la extensión de tu navegador y listo"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 35.00},
+        {"meses": 12,"precio": 280.00}
+      ]
+    },
+    {
+      "nombre": "CRM (en la nube)",
+      "descripcion": "Maneja tu negocio en la nube, 1 línea para 1 negocio puede albergar cientos de usuarios",
+      "imagen": "images/crm2.webp",
+      "categoria": "otros",
+      "caracteristicas": [
+        "Se activa 1 Línea y 1 Usuario.",
+        "Todo está en la nube en tiempo real",
+        "Usuarios y contraseñas para ti y tu equipo."
+      ],
+      "planes": [
+        {"meses": 1,"precio": 50.00},
+        {"meses": 12,"precio": 400.00}
+      ]
+    },
+    {
+      "nombre": "Duolingo Super",
+      "descripcion": "Unido a un plan de clases",
+      "imagen": "images/duolingo.webp",
+      "categoria": "otros",
+      "caracteristicas": [
+        "Beneficios del duolingo SUPER",
+        "Estudia idiomas dinámicamente",
+        "Sin límites de vida"
+      ],
+      "planes": [
+        {"meses": 1,"precio": 6.00},
+        {"meses": 3,"precio": 15.00},
+        {"meses": 6,"precio": 24.00},
+        {"meses": 12,"precio": 36.00}
       ]
     }
   ]
