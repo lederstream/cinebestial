@@ -358,6 +358,39 @@
       ]
     },
     {
+      "nombre": "Spotify Individual",
+      "descripcion": "Cuenta a Dominio unidas a un plan familiar.",
+      "imagen": "images/spotify.webp",
+      "categoria": "musica",
+      "caracteristicas": [
+        "Nueva / Renovación",
+        "Agregado a un plan familiar",
+        "Lo mejor para ti, plan familiar."
+      ],
+      "planes": [
+        {"meses": 4,"precio": 60.00},
+        {"meses": 7,"precio": 98.00},
+        {"meses": 12,"precio": 156.00},
+        {"meses": 12,"precio": 156.00}
+      ]
+    },
+    {
+      "nombre": "Spotify Familiar",
+      "descripcion": "Cuenta a Dominio con garantía del tiempo contrtado.",
+      "imagen": "images/spotify.webp",
+      "categoria": "musica",
+      "caracteristicas": [
+        "Nueva / Renovación",
+        "Agregalos a tu plan familiar",
+        "Lo mejor para ti, plan familiar."
+      ],
+      "planes": [
+        {"meses": 4,"precio": 60.00},
+        {"meses": 7,"precio": 98.00},
+        {"meses": 12,"precio": 156.00}
+      ]
+    },
+    {
       "nombre": "WA Sender",
       "descripcion": "Envío de mensajería masiva y personalizada",
       "imagen": "images/wasender.webp",
