@@ -15,6 +15,34 @@
       ]
     },
     {
+      "nombre": "Max Platino",
+      "descripcion": "Cuenta de alquiler:",
+      "imagen": "images/max.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Plan Platino",
+        "Todo el contenido premium para ti.",
+        "Garantía por el tiempo contratado."],
+      "planes": [
+        {"meses": 1, "precio": 18.00},
+        {"meses": 3, "precio": 48.00}
+      ]
+    },
+    {
+      "nombre": "Max Estándar",
+      "descripcion": "Cuenta de alquiler:",
+      "imagen": "images/max.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Plan Estándar",
+        "Todo el contenido exclusivo para ti.",
+        "Garantía por el tiempo contratado."],
+      "planes": [
+        {"meses": 1, "precio": 9.00},
+        {"meses": 3, "precio": 24.00}
+      ]
+    },
+    {
       "nombre": "Paramount Premium",
       "descripcion": "Cuenta de alquiler:",
       "imagen": "images/paramount.webp",
