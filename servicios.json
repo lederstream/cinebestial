@@ -43,6 +43,20 @@
       ]
     },
     {
+      "nombre": "Max Platino",
+      "descripcion": "Cuenta a Dominio BAJO PEDIDO con garantía de:",
+      "imagen": "images/max.webp",
+      "categoria": "streaming",
+      "caracteristicas": [
+        "Proveedor CC 🇵🇪🇨🇱🇧🇴",
+        "Posible autopay.",
+        "4 dispositivos en simultáneo."],
+      "planes": [
+        {"meses": 0, "precio": 18.00},
+        {"meses": 1, "precio": 22.00}
+      ]
+    },
+    {
       "nombre": "Paramount Premium",
       "descripcion": "Cuenta de alquiler:",
       "imagen": "images/paramount.webp",
