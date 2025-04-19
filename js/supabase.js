@@ -77,66 +77,74 @@
   
 
       // Generador simple de UUID
-      const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
         const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 
-    // Registrar nuevo proveedor
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+// REGISTRO CON SUPABASE
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
 
-        const name = document.getElementById('registerName').value.trim();
-        const email = document.getElementById('registerEmail').value.trim();
-        const password = document.getElementById('registerPassword').value;
-        const confirmPassword = document.getElementById('registerConfirmPassword').value;
+  const name = document.getElementById('registerName').value.trim();
+  const email = document.getElementById('registerEmail').value.trim();
+  const password = document.getElementById('registerPassword').value;
+  const confirmPassword = document.getElementById('registerConfirmPassword').value;
 
-        if (password !== confirmPassword) {
-            alert("Las contraseñas no coinciden");
-            return;
-        }
+  if (password !== confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+  }
 
-        let users = JSON.parse(localStorage.getItem('usuarios')) || [];
+  const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+          data: {
+              name: name // guardamos nombre como metadata del usuario
+          }
+      }
+  });
 
-        if (users.some(u => u.email === email)) {
-            alert("Este correo ya está registrado");
-            return;
-        }
+  if (error) {
+      alert("Error al registrarse: " + error.message);
+  } else {
+      alert("Registro exitoso. Revisa tu correo para confirmar tu cuenta.");
+      document.getElementById('registerForm').reset();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+      modal.hide();
+  }
+});
 
-        const nuevoUsuario = {
-            id: generateUUID(),
-            nombre: name,
-            email: email,
-            password: password,
-            productos: []
-        };
 
-        users.push(nuevoUsuario);
-        localStorage.setItem('usuarios', JSON.stringify(users));
+// LOGIN CON SUPABASE
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-        alert("¡Registro exitoso! Ahora puedes iniciar sesión");
-        document.getElementById('registerForm').reset();
-        const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
-        modal.hide();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
     });
 
-    // Iniciar sesión
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+    if (error) {
+        alert("Correo o contraseña incorrectos: " + error.message);
+        return;
+    }
 
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
+    // Guardamos sesión en sessionStorage
+    sessionStorage.setItem('usuarioActivo', JSON.stringify(data.user));
+    alert("¡Inicio de sesión exitoso!");
 
-        let users = JSON.parse(localStorage.getItem('usuarios')) || [];
-        const user = users.find(u => u.email === email && u.password === password);
+    document.getElementById('loginForm').reset();
+    const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+    modal.hide();
 
-        if (!user) {
-            alert("Correo o contraseña incorrectos");
-            return;
-        }
+    mostrarPanelProveedor(data.user.user_metadata.name || data.user.email);
+});
 
-        sessionStorage.setItem('usuarioActivo', JSON.stringify(user));
-        alert("¡Inicio de sesión exitoso!");
 
         // Redirigir al panel de productos o mostrarlo
         document.getElementById('loginForm').reset();
@@ -144,7 +152,6 @@
         modal.hide();
 
         mostrarPanelProveedor(user.nombre);
-    });
 
     // Mostrar panel del proveedor logeado
     function mostrarPanelProveedor(nombre) {
@@ -155,8 +162,9 @@
 
     // Si ya hay sesión activa, mostrar bienvenida
     window.addEventListener('DOMContentLoaded', () => {
-        const usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo'));
-        if (usuarioActivo) {
-            mostrarPanelProveedor(usuarioActivo.nombre);
-        }
-    });
+      const usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo'));
+      if (usuarioActivo) {
+          mostrarPanelProveedor(usuarioActivo.user_metadata?.name || usuarioActivo.email);
+      }
+  });
+  
