@@ -47,5 +47,31 @@
     });
   }
 
+//buscador de productos
+  function mostrarProductos(lista) {
+    const contenedor = document.getElementById('contenedor-productos');
+    contenedor.innerHTML = '';
+  
+    lista.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = 'producto';
+      card.innerHTML = `
+        <h2>${prod.nombre}</h2>
+        <p>Precio: S/. ${prod.precio}</p>
+        <p>Stock: ${prod.stock} unidades</p>
+      `;
+      contenedor.appendChild(card);
+    });
+  }
+  
+  document.getElementById('buscador').addEventListener('input', (e) => {
+    const texto = e.target.value.toLowerCase();
+    const filtrados = productosCargados.filter(p =>
+      p.nombre.toLowerCase().includes(texto)
+    );
+    mostrarProductos(filtrados);
+  });
   // 4. Ejecutar al cargar
   cargarProductos();
+
+  
