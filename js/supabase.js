@@ -75,3 +75,88 @@
   cargarProductos();
 
   
+
+      // Generador simple de UUID
+      const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+
+    // Registrar nuevo proveedor
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('registerName').value.trim();
+        const email = document.getElementById('registerEmail').value.trim();
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+        if (password !== confirmPassword) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
+
+        let users = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        if (users.some(u => u.email === email)) {
+            alert("Este correo ya está registrado");
+            return;
+        }
+
+        const nuevoUsuario = {
+            id: generateUUID(),
+            nombre: name,
+            email: email,
+            password: password,
+            productos: []
+        };
+
+        users.push(nuevoUsuario);
+        localStorage.setItem('usuarios', JSON.stringify(users));
+
+        alert("¡Registro exitoso! Ahora puedes iniciar sesión");
+        document.getElementById('registerForm').reset();
+        const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+        modal.hide();
+    });
+
+    // Iniciar sesión
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+
+        let users = JSON.parse(localStorage.getItem('usuarios')) || [];
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (!user) {
+            alert("Correo o contraseña incorrectos");
+            return;
+        }
+
+        sessionStorage.setItem('usuarioActivo', JSON.stringify(user));
+        alert("¡Inicio de sesión exitoso!");
+
+        // Redirigir al panel de productos o mostrarlo
+        document.getElementById('loginForm').reset();
+        const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+        modal.hide();
+
+        mostrarPanelProveedor(user.nombre);
+    });
+
+    // Mostrar panel del proveedor logeado
+    function mostrarPanelProveedor(nombre) {
+        const contenedor = document.getElementById('panelProveedor');
+        contenedor.innerHTML = `<h3 class="text-white">Bienvenido, ${nombre}</h3>
+        <p class="text-white">Aquí puedes subir tus productos.</p>`;
+    }
+
+    // Si ya hay sesión activa, mostrar bienvenida
+    window.addEventListener('DOMContentLoaded', () => {
+        const usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo'));
+        if (usuarioActivo) {
+            mostrarPanelProveedor(usuarioActivo.nombre);
+        }
+    });
