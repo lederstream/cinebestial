@@ -74,7 +74,7 @@ document.getElementById('buscador').addEventListener('input', (e) => {
 });
 
 // Ejecutar al cargar
-cargarProductos();
+document.addEventListener('DOMContentLoaded', cargarProductos);
 
 // Generador simple de UUID
 const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
