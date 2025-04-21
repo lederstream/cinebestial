@@ -23,7 +23,6 @@ async function cargarProductos() {
 
     const contenedor = document.querySelector('#services-container');
     
-    // Verificar si el contenedor existe
     if (!contenedor) {
       console.warn('El contenedor #services-container no fue encontrado en el DOM');
       return;
@@ -31,8 +30,7 @@ async function cargarProductos() {
 
     contenedor.innerHTML = '';
 
-    productos.forEach((producto) => {
-      // Asegurarse que beneficios es un array
+    productos.forEach((producto, index) => {
       const beneficios = Array.isArray(producto.beneficios) ? producto.beneficios : [];
       
       const beneficiosHTML = beneficios.map(b => `
@@ -41,7 +39,7 @@ async function cargarProductos() {
         </p>`).join('');
 
       const cardHTML = `
-        <div class="rounded-xl bg-[#111] shadow-md overflow-hidden p-4 mb-4">
+        <div class="rounded-xl bg-[#111] shadow-md overflow-hidden p-4 mb-4" id="producto-${index}">
           <div class="w-full overflow-hidden rounded-xl mb-2">
             <img src="${producto.imagen || ''}" class="w-full object-cover" alt="${producto.titulo || 'Producto'}">
           </div>
@@ -77,9 +75,10 @@ function mostrarProductos(lista) {
 
   contenedor.innerHTML = '';
 
-  lista.forEach(prod => {
+  lista.forEach((prod, index) => {
     const card = document.createElement('div');
     card.className = 'producto';
+    card.id = `producto-busqueda-${index}`;
     card.innerHTML = `
       <h2>${prod.nombre || 'Sin nombre'}</h2>
       <p>Precio: S/. ${prod.precio || '0.00'}</p>
@@ -89,8 +88,8 @@ function mostrarProductos(lista) {
   });
 }
 
-// Configurar buscador solo si existe
-const buscador = document.getElementById('buscador');
+// Configurar buscador
+const buscador = document.getElementById('buscador-productos');
 if (buscador) {
   buscador.addEventListener('input', (e) => {
     const texto = e.target.value.toLowerCase();
@@ -101,7 +100,7 @@ if (buscador) {
   });
 }
 
-// Ejecutar al cargar solo si el contenedor existe
+// Ejecutar al cargar
 document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('#services-container')) {
     cargarProductos();
@@ -114,16 +113,16 @@ const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/
   return v.toString(16);
 });
 
-// Registrar nuevo proveedor solo si el formulario existe
-const registerForm = document.getElementById('registerForm');
+// Registrar nuevo proveedor
+const registerForm = document.getElementById('form-registro-proveedor');
 if (registerForm) {
   registerForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('registerName')?.value.trim() || '';
-    const email = document.getElementById('registerEmail')?.value.trim() || '';
-    const password = document.getElementById('registerPassword')?.value || '';
-    const confirmPassword = document.getElementById('registerConfirmPassword')?.value || '';
+    const name = document.getElementById('registro-nombre')?.value.trim() || '';
+    const email = document.getElementById('registro-email')?.value.trim() || '';
+    const password = document.getElementById('registro-password')?.value || '';
+    const confirmPassword = document.getElementById('registro-confirmar-password')?.value || '';
 
     if (password !== confirmPassword) {
       alert("Las contraseñas no coinciden");
@@ -150,19 +149,19 @@ if (registerForm) {
 
     alert("¡Registro exitoso! Ahora puedes iniciar sesión");
     registerForm.reset();
-    const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+    const modal = bootstrap.Modal.getInstance(document.getElementById('modal-registro'));
     if (modal) modal.hide();
   });
 }
 
-// Iniciar sesión solo si el formulario existe
-const loginForm = document.getElementById('loginForm');
+// Iniciar sesión
+const loginForm = document.getElementById('form-login');
 if (loginForm) {
   loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const email = document.getElementById('loginEmail')?.value.trim() || '';
-    const password = document.getElementById('loginPassword')?.value || '';
+    const email = document.getElementById('login-email')?.value.trim() || '';
+    const password = document.getElementById('login-password')?.value || '';
 
     let users = JSON.parse(localStorage.getItem('usuarios')) || [];
     const user = users.find(u => u.email === email && u.password === password);
@@ -176,7 +175,7 @@ if (loginForm) {
     alert("¡Inicio de sesión exitoso!");
 
     loginForm.reset();
-    const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+    const modal = bootstrap.Modal.getInstance(document.getElementById('modal-login'));
     if (modal) modal.hide();
 
     mostrarPanelProveedor(user.nombre);
@@ -185,14 +184,14 @@ if (loginForm) {
 
 // Mostrar panel del proveedor logeado
 function mostrarPanelProveedor(nombre) {
-  const contenedor = document.getElementById('panelProveedor');
+  const contenedor = document.getElementById('panel-proveedor');
   if (contenedor) {
     contenedor.innerHTML = `<h3 class="text-white">Bienvenido, ${nombre}</h3>
     <p class="text-white">Aquí puedes subir tus productos.</p>`;
   }
 }
 
-// Si ya hay sesión activa, mostrar bienvenida
+// Verificar sesión activa
 window.addEventListener('DOMContentLoaded', () => {
   try {
     const usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo'));
