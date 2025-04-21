@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initAOS();
     initCurrencyConverter(); // Mejorado
     // initCountAnimations();
-    initPreloader();
-    initProductModals();
-    initForms();
-    initLoadMoreButton();
+    // initPreloader();
+    // initProductModals();
+    // initForms();
+    // initLoadMoreButton();
 });
 
 function initAOS() {
