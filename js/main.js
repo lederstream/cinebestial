@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. Inicialización de componentes
     initAOS();
     initCurrencyConverter(); // Mejorado
-    initTypingEffect();
+    //initTypingEffect();
     initCountAnimations();
     initPreloader();
     initProductModals();
