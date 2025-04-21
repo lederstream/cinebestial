@@ -13,7 +13,7 @@ async function cargarProductos() {
 
   if (error) {
     console.error('Error al cargar productos:', error.message);
-    return;
+    return; 
   }
 
   const contenedor = document.querySelector('#services-container');
@@ -50,7 +50,7 @@ async function cargarProductos() {
 
 // Buscador de productos
 function mostrarProductos(lista) {
-  const contenedor = document.getElementById('contenedor-productos');
+  const contenedor = document.getElementById('services-container');
   contenedor.innerHTML = '';
 
   lista.forEach(prod => {
