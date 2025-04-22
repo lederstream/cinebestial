@@ -3,7 +3,7 @@
     {
       "nombre": "Netflix Premium",
       "descripcion": "Cuenta de alquiler:",
-      "imagen": "images/netflix.webp",
+      "imagen": "img/netflix.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "5 perfiles / 4 pantallas",
@@ -17,7 +17,7 @@
     {
       "nombre": "Max Platino",
       "descripcion": "Cuenta de alquiler:",
-      "imagen": "images/max.webp",
+      "imagen": "img/max.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Plan Platino",
@@ -31,7 +31,7 @@
     {
       "nombre": "Max Estándar",
       "descripcion": "Cuenta de alquiler:",
-      "imagen": "images/max.webp",
+      "imagen": "img/max.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Plan Estándar",
@@ -45,7 +45,7 @@
     {
       "nombre": "Max Platino",
       "descripcion": "Cuenta a Dominio BAJO PEDIDO con garantía de:",
-      "imagen": "images/max.webp",
+      "imagen": "img/max.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Proveedor CC 🇵🇪🇨🇱🇧🇴",
@@ -59,7 +59,7 @@
     {
       "nombre": "Paramount Premium",
       "descripcion": "Cuenta de alquiler:",
-      "imagen": "images/paramount.webp",
+      "imagen": "img/paramount.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Renovable y buen contenido",
@@ -74,7 +74,7 @@
     {
       "nombre": "Max Estándar",
       "descripcion": "Cuenta a Dominio con garantía de:",
-      "imagen": "images/max.webp",
+      "imagen": "img/max.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Nueva / Renovación",
@@ -87,7 +87,7 @@
     {
       "nombre": "Disney+ Estándar",
       "descripcion": "Cuenta a Dominio Trimestral con garantía de:",
-      "imagen": "images/disney.webp",
+      "imagen": "img/disney.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Nueva / Renovación",
@@ -101,7 +101,7 @@
     {
       "nombre": "Paramount Premium",
       "descripcion": "Cuenta a Dominio con garantía de:",
-      "imagen": "images/paramount.webp",
+      "imagen": "img/paramount.webp",
       "categoria": "streaming",
       "caracteristicas": [
         "Nueva / Renovación.",
@@ -115,7 +115,7 @@
     {
       "nombre": "Mica Play",
       "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
-      "imagen": "images/micaplay.webp",
+      "imagen": "img/micaplay.webp",
       "categoria": "iptv",
       "caracteristicas": [
         "App propia para Android y Roku",
@@ -132,7 +132,7 @@
     {
       "nombre": "Flujo Tv",
       "descripcion": "El mejor contenido solo aquí. Con app propia disponible en Android",
-      "imagen": "images/flujotv.webp",
+      "imagen": "img/flujotv.webp",
       "categoria": "iptv",
       "caracteristicas": [
         "App propia para Android",
@@ -149,7 +149,7 @@
     {
       "nombre": "Tele Latino",
       "descripcion": "El mejor contenido solo aquí",
-      "imagen": "images/telelatino.webp",
+      "imagen": "img/telelatino.webp",
       "categoria": "iptv",
       "caracteristicas": [
         "El mejor entretenimiento Latino",
@@ -166,7 +166,7 @@
     {
       "nombre": "Smart Fit",
       "descripcion": "El mejor gymnasio para ti.",
-      "imagen": "images/smartfit.webp",
+      "imagen": "img/smartfit.webp",
       "categoria": "otros",
       "caracteristicas": [
         "Pago de mensualidades",
@@ -182,7 +182,7 @@
     {
       "nombre": "Mica Play",
       "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
-      "imagen": "images/micaplay.webp",
+      "imagen": "img/micaplay.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel Reseller",
@@ -199,7 +199,7 @@
     {
       "nombre": "Mica Play",
       "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
-      "imagen": "images/micaplay.webp",
+      "imagen": "img/micaplay.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel Super Reseller",
@@ -215,7 +215,7 @@
     {
       "nombre": "Mica Play",
       "descripcion": "El mejor contenido solo aquí. Con app propia disponible en ROKU y ANDROID",
-      "imagen": "images/micaplay.webp",
+      "imagen": "img/micaplay.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel Admin",
@@ -231,7 +231,7 @@
     {
       "nombre": "Flujo Tv",
       "descripcion": "Tu cine en casa, disponible en Android. PRIMERA COMPRA MÍNIMA PARA EL PANEL ES DE 30 CRÉDITOS",
-      "imagen": "images/flujotv.webp",
+      "imagen": "img/flujotv.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel Reseller",
@@ -247,7 +247,7 @@
     {
       "nombre": "Flujo Tv",
       "descripcion": "Tu cine en casa, disponible en Android",
-      "imagen": "images/flujotv.webp",
+      "imagen": "img/flujotv.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel Super Reseller",
@@ -263,7 +263,7 @@
     {
       "nombre": "Flujo Tv",
       "descripcion": "Tu cine en casa, disponible en Android",
-      "imagen": "images/flujotv.webp",
+      "imagen": "img/flujotv.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel Admin",
@@ -279,7 +279,7 @@
     {
       "nombre": "Tele Latino",
       "descripcion": "Compatible en Windows y Android",
-      "imagen": "images/telelatino.webp",
+      "imagen": "img/telelatino.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel",
@@ -298,7 +298,7 @@
     {
       "nombre": "El Profe Net",
       "descripcion": "Compatible con Roku,Lg, samsung, Android y iOS",
-      "imagen": "images/profenet.webp",
+      "imagen": "img/profenet.webp",
       "categoria": "iptv",
       "caracteristicas": [
         "Disfrute del contenido",
@@ -314,7 +314,7 @@
     {
       "nombre": "El Profe Net",
       "descripcion": "Compatible con Roku,Lg, samsung, Android y iOS",
-      "imagen": "images/profenet.webp",
+      "imagen": "img/profenet.webp",
       "categoria": "paneles",
       "caracteristicas": [
         "Panel (primera compra mínima de 50 créditos)",
@@ -332,7 +332,7 @@
     {
       "nombre": "Apple Tv",
       "descripcion": "Cuenta a Dominio",
-      "imagen": "images/appletv.webp",
+      "imagen": "img/appletv.webp",
       "categoria": "musica",
       "caracteristicas": [
         "Solo Nuevas",
@@ -346,7 +346,7 @@
     {
       "nombre": "Apple Music",
       "descripcion": "Cuenta a Dominio",
-      "imagen": "images/applemusic.webp",
+      "imagen": "img/applemusic.webp",
       "categoria": "musica",
       "caracteristicas": [
         "Solo Nuevas",
@@ -360,7 +360,7 @@
     {
       "nombre": "Apple Tv + Apple Music",
       "descripcion": "Cuenta a Dominio",
-      "imagen": "images/comboapple.webp",
+      "imagen": "img/comboapple.webp",
       "categoria": "musica",
       "caracteristicas": [
         "Solo Nuevas",
@@ -374,7 +374,7 @@
     {
       "nombre": "Spotify Individual",
       "descripcion": "Cuenta a Dominio unidas a un plan familiar.",
-      "imagen": "images/spotify.webp",
+      "imagen": "img/spotify.webp",
       "categoria": "musica",
       "caracteristicas": [
         "Nueva / Renovación",
@@ -391,7 +391,7 @@
     {
       "nombre": "Spotify Familiar",
       "descripcion": "Cuenta a Dominio con garantía del tiempo contrtado.",
-      "imagen": "images/spotify.webp",
+      "imagen": "img/spotify.webp",
       "categoria": "musica",
       "caracteristicas": [
         "Nueva / Renovación",
@@ -407,7 +407,7 @@
     {
       "nombre": "WA Sender",
       "descripcion": "Envío de mensajería masiva y personalizada",
-      "imagen": "images/wasender.webp",
+      "imagen": "img/wasender.webp",
       "categoria": "otros",
       "caracteristicas": [
         "Se entrega LICENCIA.",
@@ -424,7 +424,7 @@
     {
       "nombre": "CRM (local / extensión)",
       "descripcion": "Gestión del negocio y clientes desde cualquier navegador rápido y personalizado",
-      "imagen": "images/crm.webp",
+      "imagen": "img/crm.webp",
       "categoria": "otros",
       "caracteristicas": [
         "Se entrega LICENCIA única con tu número",
@@ -439,7 +439,7 @@
     {
       "nombre": "CRM (en la nube)",
       "descripcion": "Maneja tu negocio en la nube, 1 línea para 1 negocio puede albergar cientos de usuarios",
-      "imagen": "images/crm2.webp",
+      "imagen": "img/crm2.webp",
       "categoria": "otros",
       "caracteristicas": [
         "Se activa 1 Línea y 1 Usuario.",
@@ -454,7 +454,7 @@
     {
       "nombre": "Duolingo Super",
       "descripcion": "Unido a un plan de clases",
-      "imagen": "images/duolingo.webp",
+      "imagen": "img/duolingo.webp",
       "categoria": "otros",
       "caracteristicas": [
         "Beneficios del duolingo SUPER",
